@@ -10,7 +10,7 @@
 //     }
 // });
 
-$(document).ready(function(){
+$(window).on('hashchange', function(){
     var lastScrollTop = Cookies.get("scroll-pos")
     if (lastScrollTop) {
         $(window).scrollTop(lastScrollTop);
