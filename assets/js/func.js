@@ -1,7 +1,7 @@
 $(window).on('hashchange', function(){
     var lastScrollTop = Cookies.get("scroll-pos")
     if (typeof (history.pushState) != "undefined") {
-        history.pushState(null, $("head title").text(), "./index.html"); // for local testing
+        //history.pushState(null, $("head title").text(), "./index.html"); // for local testing
         history.pushState(null, $("head title").text(), "./");
     }
     if (lastScrollTop) {
@@ -34,6 +34,7 @@ $("#lightmode").on('click', function(e) {
         $("#main section").css("border-top", "solid 6px #f4f4f4");
         $(".features article").css("border-top", "solid 3px #f4f4f4");
         $("#footer").css("background", "#fafafa");
+        $("#wrapper").css("background", "#fff");
 
         toggleDarkMode();
     }
@@ -47,6 +48,7 @@ $("#darkmode").on('click', function(e) {
         $("#main section").css("border-top", "solid 6px #282828");
         $(".features article").css("border-top", "solid 3px #282828");
         $("#footer").css("background", "#222222");
+        $("#wrapper").css("background", "#121212");
 
         toggleDarkMode();
     }
