@@ -15,6 +15,7 @@ $(window).on('hashchange', function(){
     if (lastScrollTop) {
         $(window).scrollTop(lastScrollTop);
         Cookies.remove('scroll-pos');
+        history.replaceState("", $("head title").text(), "");
     }
     else {
         window.scrollTo(0, 0);
@@ -23,15 +24,7 @@ $(window).on('hashchange', function(){
 });
 
 $(window).on('beforeunload', function(){
-    var lastScrollTop = Cookies.get("scroll-pos")
-    if (lastScrollTop) {
-        $(window).scrollTop(lastScrollTop);
-        Cookies.remove('scroll-pos');
-    }
-    else {
-        window.scrollTo(0, 0);
-        return;
-    }
+    window.scrollTo(0, 0);
 });
 
 $("#engtoggle").on('click', function(e) {
