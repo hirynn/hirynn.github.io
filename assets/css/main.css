@@ -25,6 +25,60 @@ section, summary, time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;}
 
+/* CUSTOM CODE */
+
+#toggle {
+	/* background-color: inherit; */
+	top: 0px;
+	right: 0px;
+	padding: 0 0;
+	margin: collapse;
+	position: absolute;
+	display: inline;
+	vertical-align: top;
+}
+
+#table-toggle tbody tr{
+	margin: 0px auto 0px auto;
+	background-color: #4acaa8;
+	border: none;
+	border-collapse:collapse;
+	/* border: 1px solid black;
+	border-collapse: initial; */
+	white-space: nowrap;
+}
+
+#table-toggle tr {
+	padding: 0 0 0 0;
+	width: 1px;
+	height: 1px;
+	white-space: nowrap;
+}
+
+#table-toggle td {
+	padding: 0 10px 0 0;
+	width: 1px;
+	height: 1px;	
+	white-space: nowrap;
+	color: white;
+	font-weight: bold;
+	font-size: 16px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#table-toggle a {
+	text-decoration: none !important;
+	text-decoration-line: none !important;
+	border-bottom: none;
+}
+
+#table-toggle .icon_td {
+	padding-top: 5%;
+}
+
+/* CUSTOM CODE END */
+
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
@@ -2444,7 +2498,7 @@ input, select, textarea {
 	}
 
 	table {
-		margin: 0 0 2.25em 0;
+		/* margin: 0 0 2.25em 0; */
 		width: 100%;
 	}
 
@@ -2728,6 +2782,7 @@ input, select, textarea {
 		}
 
 			#header a:hover {
+				text-decoration: none;
 				color: #ffffff !important;
 			}
 
