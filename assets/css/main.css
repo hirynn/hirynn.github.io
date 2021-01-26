@@ -74,6 +74,28 @@ section, summary, time, mark, audio, video {
 	padding-top: 5%;
 }
 
+.dark_mode_main {
+	background-color: #121212;
+	color: white;
+	color: rgba(255, 255, 255, 1);
+}
+
+.dark_mode_header {
+	background-color: #682747 !important;
+}
+
+.dark_mode_text {
+	color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.dark_mode_text_alt {
+	color: #E579AB !important;
+}
+
+.dark_mode_scroll {
+	background-color: #FFE4F7 !important
+}
+
 /* CUSTOM CODE END */
 
 article, aside, details, figcaption, figure,
@@ -2710,8 +2732,8 @@ input, select, textarea {
 	}
 
 		.features article:first-child {
-			border-top: 0;
-			padding-top: 0;
+			border-top: 0 !important;
+			padding-top: 0 !important;
 		}
 
 		.features article .image {
@@ -2860,6 +2882,7 @@ input, select, textarea {
 
 						#header > nav ul li a.active {
 							background: #fff;
+							opacity: 0.6;
 							color: #50808E !important;
 						}
 
@@ -2874,8 +2897,7 @@ input, select, textarea {
 		padding-right: 23em;
 	}
 
-/* Main */
-
+/* Main */	
 	#main > section {
 		border-top: solid 6px #f4f4f4;
 	}
@@ -2885,7 +2907,7 @@ input, select, textarea {
 		}
 
 		#main > section:first-child {
-			border-top: 0;
+			border-top: 0 !important;
 		}
 
 /* Footer */
@@ -3128,7 +3150,8 @@ input, select, textarea {
 					}
 
 					#titleBar .toggle:before {
-						background: #2D848A;
+						/* background: #2D848A; */
+						background: #222;
 						color: #ffffff;
 						content: '\f0c9';
 						display: block;
