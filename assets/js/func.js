@@ -1,4 +1,16 @@
-$(window).on('load', function() {
+// $(window).on('load', function() {
+//     var lastScrollTop = Cookies.get("scroll-pos")
+//     if (lastScrollTop) {
+//         $(window).scrollTop(lastScrollTop);
+//         Cookies.remove('scroll-pos');
+//     }
+//     else {
+//         window.scrollTo(0, 0);
+//         return;
+//     }
+// });
+
+$(document).ready(function(){
     var lastScrollTop = Cookies.get("scroll-pos")
     if (lastScrollTop) {
         $(window).scrollTop(lastScrollTop);
