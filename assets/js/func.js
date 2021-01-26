@@ -10,6 +10,18 @@ $(window).on('load', function() {
     }
 });
 
+$(window).on('beforeunload', function(){
+    var lastScrollTop = Cookies.get("scroll-pos")
+    if (lastScrollTop) {
+        $(window).scrollTop(lastScrollTop);
+        Cookies.remove('scroll-pos');
+    }
+    else {
+        window.scrollTo(0, 0);
+        return;
+    }
+});
+
 $("#engtoggle").on('click', function(e) {
     alert("something");
 })
