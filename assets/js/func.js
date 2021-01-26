@@ -15,7 +15,7 @@ $(window).on('hashchange', function(){
     if (lastScrollTop) {
         $(window).scrollTop(lastScrollTop);
         Cookies.remove('scroll-pos');
-        history.replaceState("", $("head title").text(), "");
+        history.replaceState({}, $("head title").text(), "");
     }
     else {
         window.scrollTo(0, 0);
