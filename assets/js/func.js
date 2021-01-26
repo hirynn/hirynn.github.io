@@ -12,6 +12,9 @@
 
 $(window).on('hashchange', function(){
     var lastScrollTop = Cookies.get("scroll-pos")
+    if (typeof (history.pushState) != "undefined") {
+        history.pushState(null, $("head title").text(), "./");
+    }
     if (lastScrollTop) {
         $(window).scrollTop(lastScrollTop);
         Cookies.remove('scroll-pos');
@@ -24,7 +27,15 @@ $(window).on('hashchange', function(){
 });
 
 $(window).on('beforeunload', function(){
-    window.scrollTo(0, 0);
+    var lastScrollTop = Cookies.get("scroll-pos")
+    if (lastScrollTop) {
+        $(window).scrollTop(lastScrollTop);
+        Cookies.remove('scroll-pos');
+    }
+    else {
+        window.scrollTo(0, 0);
+        return;
+    }
 });
 
 $("#engtoggle").on('click', function(e) {
