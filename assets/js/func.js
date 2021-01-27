@@ -50,7 +50,6 @@ $(window).on('hashchange', function(){
 $(window).on('beforeunload', function(){
     // if page is refreshed
     //window.scrollTo(0, 0);
-    history.pushState(null, $("head title").text(), "./");
 });
 
 $(window).on('DOMContentLoaded', function(){
@@ -94,6 +93,7 @@ $("#engtoggle").on('click', function(e) {
 
     if (lang == undefined || lang == "jp")
         if (typeof (history.pushState) != "undefined") {
+            Cookies.set('scroll-pos', $(window).scrollTop(), {expires: 1});
             window.location.replace("./index.html");
             history.pushState(null, $("head title").text(), "./");
             localStorage.setItem("lang", "en");
@@ -105,6 +105,7 @@ $("#jptoggle").on('click', function(e) {
 
     if (lang == undefined || lang == "en")
         if (typeof (history.pushState) != "undefined") {
+            Cookies.set('scroll-pos', $(window).scrollTop(), {expires: 1});
             window.location.replace("./index_jap.html");
             history.pushState(null, $("head title").text(), "./");
             localStorage.setItem("lang", "jp");
