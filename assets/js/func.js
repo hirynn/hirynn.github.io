@@ -49,7 +49,8 @@ $(window).on('hashchange', function(){
 
 $(window).on('beforeunload', function(){
     // if page is refreshed
-    window.scrollTo(0, 0);
+    //window.scrollTo(0, 0);
+    history.pushState(null, $("head title").text(), "./");
 });
 
 $(window).on('DOMContentLoaded', function(){
@@ -85,6 +86,7 @@ $(window).on('DOMContentLoaded', function(){
 
     var setTheme = localStorage.getItem("theme");
     window.__setTheme(setTheme == undefined ? "lightmode" : setTheme);
+    history.pushState(null, $("head title").text(), "./");
 });
 
 $("#engtoggle").on('click', function(e) {  
