@@ -92,7 +92,8 @@ $(window).on('DOMContentLoaded', function(){
 
 $("#engtoggle").on('click', function(e) {  
     let lang = localStorage.getItem("lang");
-    Cookies.set('scroll-pos', $(window).scrollTop(), {expires: 1});
+    //Cookies.set('scroll-pos', $(window).scrollTop(), {expires: 1});
+    localStorage.setItem("scroll-pos", $(window).scrollTop());
 
     if (lang == undefined || lang == "jp")
         if (typeof (history.pushState) != "undefined") {
@@ -104,7 +105,8 @@ $("#engtoggle").on('click', function(e) {
 
 $("#jptoggle").on('click', function(e) {
     let lang = localStorage.getItem("lang");
-    Cookies.set('scroll-pos', $(window).scrollTop(), {expires: 1});
+    //Cookies.set('scroll-pos', $(window).scrollTop(), {expires: 1});
+    localStorage.setItem("scroll-pos", $(window).scrollTop());
 
     if (lang == undefined || lang == "en")
         if (typeof (history.pushState) != "undefined") {
@@ -147,5 +149,11 @@ function handleScrollPos()
     else {
         window.scrollTo(0, 0);
         return;
+    }
+
+    var scroll = localStorage.getItem("scroll-pos");
+    if (scroll != undefined) {
+        $(window).scrollTop(scroll);
+        localStorage.removeItem("scroll-pos");
     }
 }
