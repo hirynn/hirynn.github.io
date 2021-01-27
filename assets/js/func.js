@@ -90,10 +90,10 @@ $(window).on('DOMContentLoaded', function(){
 
 $("#engtoggle").on('click', function(e) {  
     let lang = localStorage.getItem("lang");
+    Cookies.set('scroll-pos', $(window).scrollTop(), {expires: 1});
 
     if (lang == undefined || lang == "jp")
         if (typeof (history.pushState) != "undefined") {
-            Cookies.set('scroll-pos', $(window).scrollTop(), {expires: 1});
             window.location.replace("./index.html");
             history.pushState(null, $("head title").text(), "./");
             localStorage.setItem("lang", "en");
@@ -102,10 +102,10 @@ $("#engtoggle").on('click', function(e) {
 
 $("#jptoggle").on('click', function(e) {
     let lang = localStorage.getItem("lang");
+    Cookies.set('scroll-pos', $(window).scrollTop(), {expires: 1});
 
     if (lang == undefined || lang == "en")
         if (typeof (history.pushState) != "undefined") {
-            Cookies.set('scroll-pos', $(window).scrollTop(), {expires: 1});
             window.location.replace("./index_jap.html");
             history.pushState(null, $("head title").text(), "./");
             localStorage.setItem("lang", "jp");
