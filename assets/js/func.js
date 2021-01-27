@@ -33,18 +33,19 @@ var themes = {
 
 $(window).on('hashchange', function(){
     // handling scroll position when dark/light mode is changed
-    var lastScrollTop = Cookies.get("scroll-pos")
-    if (typeof (history.pushState) != "undefined") {
-        history.pushState(null, $("head title").text(), "./");
-    }
-    if (lastScrollTop) {
-        $(window).scrollTop(lastScrollTop);
-        Cookies.remove('scroll-pos');
-    }
-    else {
-        window.scrollTo(0, 0);
-        return;
-    }
+    // var lastScrollTop = Cookies.get("scroll-pos")
+    // if (typeof (history.pushState) != "undefined") {
+    //     history.pushState(null, $("head title").text(), "./");
+    // }
+    // if (lastScrollTop) {
+    //     $(window).scrollTop(lastScrollTop);
+    //     Cookies.remove('scroll-pos');
+    // }
+    // else {
+    //     window.scrollTo(0, 0);
+    //     return;
+    // }
+    handleScrollPos();
 });
 
 $(window).on('beforeunload', function(){
@@ -85,6 +86,7 @@ $(window).on('DOMContentLoaded', function(){
 
     var setTheme = localStorage.getItem("theme");
     window.__setTheme(setTheme == undefined ? "lightmode" : setTheme);
+    handleScrollPos();
     history.pushState(null, $("head title").text(), "./");
 });
 
@@ -94,9 +96,9 @@ $("#engtoggle").on('click', function(e) {
 
     if (lang == undefined || lang == "jp")
         if (typeof (history.pushState) != "undefined") {
-            window.location.replace("./index.html");
-            history.pushState(null, $("head title").text(), "./");
             localStorage.setItem("lang", "en");
+            window.location.replace("./index.html");
+            //history.pushState(null, $("head title").text(), "./");
         }
 })
 
@@ -106,9 +108,9 @@ $("#jptoggle").on('click', function(e) {
 
     if (lang == undefined || lang == "en")
         if (typeof (history.pushState) != "undefined") {
-            window.location.replace("./index_jap.html");
-            history.pushState(null, $("head title").text(), "./");
             localStorage.setItem("lang", "jp");
+            window.location.replace("./index_jap.html");
+            //history.pushState(null, $("head title").text(), "./");
         }
 })
 
@@ -131,3 +133,19 @@ $("#darkmode").on('click', function(e) {
         window.__setTheme(localStorage.getItem("theme"));
     }
 })
+
+function handleScrollPos()
+{
+    var lastScrollTop = Cookies.get("scroll-pos")
+    if (typeof (history.pushState) != "undefined") {
+        history.pushState(null, $("head title").text(), "./");
+    }
+    if (lastScrollTop) {
+        $(window).scrollTop(lastScrollTop);
+        Cookies.remove('scroll-pos');
+    }
+    else {
+        window.scrollTo(0, 0);
+        return;
+    }
+}
