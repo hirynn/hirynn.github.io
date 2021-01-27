@@ -53,7 +53,13 @@ $(window).on('beforeunload', function(){
 });
 
 $(window).on('DOMContentLoaded', function(){
-    // handles rendering of light/dark mdoe 
+    // handles rendering of eng/jp
+    var lang = localStorage.getItem("lang");
+
+    if (lang == undefined)
+        localStorage.setItem("lang", "en");
+
+    // handles rendering of light/dark mode
     var setTheme = localStorage.getItem("theme")
     if (setTheme == undefined)
         localStorage.setItem("theme", "lightmode");
@@ -81,12 +87,26 @@ $(window).on('DOMContentLoaded', function(){
     window.__setTheme(setTheme == undefined ? "lightmode" : setTheme);
 });
 
-$("#engtoggle").on('click', function(e) {
-    
+$("#engtoggle").on('click', function(e) {  
+    let lang = localStorage.getItem("lang");
+
+    if (lang == undefined || lang == "jp")
+        if (typeof (history.pushState) != "undefined") {
+            window.location.replace("./index.html");
+            history.pushState(null, $("head title").text(), "./");
+            localStorage.setItem("lang", "en");
+        }
 })
 
 $("#jptoggle").on('click', function(e) {
-    
+    let lang = localStorage.getItem("lang");
+
+    if (lang == undefined || lang == "en")
+        if (typeof (history.pushState) != "undefined") {
+            window.location.replace("./index_jap.html");
+            history.pushState(null, $("head title").text(), "./");
+            localStorage.setItem("lang", "jp");
+        }
 })
 
 $("#lightmode").on('click', function(e) {
