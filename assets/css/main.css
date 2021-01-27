@@ -104,22 +104,9 @@ section, summary, time, mark, audio, video {
 	color: var(--text_alt_color) !important;
 }
 
-/* .dark_mode_main {
-	background-color: #121212;
-	color: rgba(255, 255, 255, 1);
+#logo {
+	color: var(--text_logo_color) !important;
 }
-
-.dark_mode_header {
-	background-color: #682747 !important;
-}
-
-.dark_mode_text {
-	color: rgba(255, 255, 255, 0.6) !important;
-}
-
-.dark_mode_text_alt {
-	color: #E579AB !important;
-} */
 
 /* CUSTOM CODE END */
 
@@ -2873,7 +2860,7 @@ input, select, textarea {
 			}
 
 				#header > footer .icons li a {
-					color: #b7eadc;
+					color: var(--footer_icons);
 				}
 
 		#header > nav {

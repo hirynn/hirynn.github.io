@@ -9,6 +9,8 @@ var themes = {
         "features_article_border_top": "solid 3px #282828",
         "footer_bg": "#222222",
         "wrapper_bg": "#121212",
+        "footer_icons": "rgba(255, 255, 255, 0.6)",
+        "text_logo_color": "rgba(255, 255, 255, 0.8)",
     },
 
     lightmode: {
@@ -21,6 +23,8 @@ var themes = {
         "features_article_border_top": "solid 3px #f4f4f4",
         "footer_bg": "#fafafa",
         "wrapper_bg": "#fff",
+        "footer_icons": "#b7eadc",
+        "text_logo_color": "white",
     }
 }
 
@@ -29,7 +33,6 @@ $(window).on('hashchange', function(){
     // handling scroll position when dark/light mode is changed
     var lastScrollTop = Cookies.get("scroll-pos")
     if (typeof (history.pushState) != "undefined") {
-        // history.pushState(null, $("head title").text(), "./index.html"); // for local testing
         history.pushState(null, $("head title").text(), "./");
     }
     if (lastScrollTop) {
