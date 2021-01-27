@@ -139,6 +139,8 @@ $("#darkmode").on('click', function(e) {
 function handleScrollPos()
 {
     var lastScrollTop = Cookies.get("scroll-pos")
+    var scroll = localStorage.getItem("scroll-pos");
+
     if (typeof (history.pushState) != "undefined") {
         history.pushState(null, $("head title").text(), "./");
     }
@@ -146,14 +148,11 @@ function handleScrollPos()
         $(window).scrollTop(lastScrollTop);
         Cookies.remove('scroll-pos');
     }
-    else {
-        window.scrollTo(0, 0);
-        return;
-    }
-
-    var scroll = localStorage.getItem("scroll-pos");
-    if (scroll != undefined) {
+    else if (scroll != undefined) {
         $(window).scrollTop(scroll);
         localStorage.removeItem("scroll-pos");
+    }
+    else {
+        window.scrollTo(0, 0);
     }
 }
