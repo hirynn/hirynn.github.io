@@ -11,6 +11,7 @@ var themes = {
         "wrapper_bg": "#121212",
         "footer_icons": "rgba(255, 255, 255, 0.6)",
         "text_logo_color": "rgba(255, 255, 255, 0.8)",
+        "header_h2_text": "#E579AB",
     },
 
     lightmode: {
@@ -25,6 +26,7 @@ var themes = {
         "wrapper_bg": "#fff",
         "footer_icons": "#b7eadc",
         "text_logo_color": "white",
+        "header_h2_text": "#4acaa8",
     }
 }
 
@@ -46,7 +48,7 @@ $(window).on('hashchange', function(){
 });
 
 $(window).on('beforeunload', function(){
-    // if page is refreshed it should go to top
+    // if page is refreshed
     window.scrollTo(0, 0);
 });
 
@@ -80,11 +82,11 @@ $(window).on('DOMContentLoaded', function(){
 });
 
 $("#engtoggle").on('click', function(e) {
-    alert("something");
+    
 })
 
 $("#jptoggle").on('click', function(e) {
-    alert("something");
+    
 })
 
 $("#lightmode").on('click', function(e) {

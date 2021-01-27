@@ -1870,7 +1870,7 @@ input, select, textarea {
 	}
 
 	header.major h2 {
-		color: #4acaa8;
+		color: var(--header_h2_text);
 		font-size: 3.5em;
 	}
 
