@@ -30,27 +30,23 @@ var themes = {
     }
 }
 
+var langs = {
+    jp: "jp", 
+    en: "en", 
+}
+
+var siteThemes = {
+    lightmode: "lightmode", 
+    darkmode: "darkmode",
+}
+
 
 $(window).on('hashchange', function(){
-    // handling scroll position when dark/light mode is changed
-    // var lastScrollTop = Cookies.get("scroll-pos")
-    // if (typeof (history.pushState) != "undefined") {
-    //     history.pushState(null, $("head title").text(), "./");
-    // }
-    // if (lastScrollTop) {
-    //     $(window).scrollTop(lastScrollTop);
-    //     Cookies.remove('scroll-pos');
-    // }
-    // else {
-    //     window.scrollTo(0, 0);
-    //     return;
-    // }
     handleScrollPos();
 });
 
 $(window).on('beforeunload', function(){
-    // if page is refreshed
-    //window.scrollTo(0, 0);
+    return;
 });
 
 $(window).on('DOMContentLoaded', function(){
@@ -58,19 +54,23 @@ $(window).on('DOMContentLoaded', function(){
     var lang = localStorage.getItem("lang");
 
     if (lang == undefined)
-        localStorage.setItem("lang", "en");
+        localStorage.setItem("lang", langs["en"]);
+
+    if (window.location.href.includes("index_jap")) {
+        localStorage.setItem("lang", langs["jp"]);
+    }
 
     // handles rendering of light/dark mode
     var setTheme = localStorage.getItem("theme")
     if (setTheme == undefined)
-        localStorage.setItem("theme", "lightmode");
+        localStorage.setItem("theme", siteThemes["lightmode"]);
 
     var root = document.documentElement.style;
     window.__onSetTheme = function() {};
     window.__setTheme = function(themeName) {
         var theme = themes[themeName];
-        var banner = "";
-        if (themeName == "lightmode")
+        var banner = "images/bg_l.gif"; // default
+        if (themeName == siteThemes["lightmode"])
             banner = "images/bg_l.gif";
         else 
             banner = "images/bg_d.gif";
@@ -85,42 +85,38 @@ $(window).on('DOMContentLoaded', function(){
     }
 
     var setTheme = localStorage.getItem("theme");
-    window.__setTheme(setTheme == undefined ? "lightmode" : setTheme);
+    window.__setTheme(setTheme == undefined ? siteThemes["lightmode"] : setTheme);
     handleScrollPos();
     history.pushState(null, $("head title").text(), "./");
 });
 
 $("#engtoggle").on('click', function(e) {  
     let lang = localStorage.getItem("lang");
-    //Cookies.set('scroll-pos', $(window).scrollTop(), {expires: 1});
     localStorage.setItem("scroll-pos", $(window).scrollTop());
 
-    if (lang == undefined || lang == "jp")
+    if (lang == undefined || lang == langs["jp"])
         if (typeof (history.pushState) != "undefined") {
-            localStorage.setItem("lang", "en");
+            localStorage.setItem("lang", langs["en"]);
             window.location.replace("./index.html");
-            //history.pushState(null, $("head title").text(), "./");
         }
 })
 
 $("#jptoggle").on('click', function(e) {
     let lang = localStorage.getItem("lang");
-    //Cookies.set('scroll-pos', $(window).scrollTop(), {expires: 1});
     localStorage.setItem("scroll-pos", $(window).scrollTop());
 
-    if (lang == undefined || lang == "en")
+    if (lang == undefined || lang == langs["en"])
         if (typeof (history.pushState) != "undefined") {
-            localStorage.setItem("lang", "jp");
+            localStorage.setItem("lang", langs["jp"]);
             window.location.replace("./index_jap.html");
-            //history.pushState(null, $("head title").text(), "./");
         }
 })
 
 $("#lightmode").on('click', function(e) {
     Cookies.set('scroll-pos', $(window).scrollTop(), {expires: 1});
 
-    if (localStorage.getItem("theme") == "darkmode") {
-        localStorage.setItem("theme", "lightmode"); 
+    if (localStorage.getItem("theme") == siteThemes["darkmode"]) {
+        localStorage.setItem("theme", siteThemes["lightmode"]); 
         
         window.__setTheme(localStorage.getItem("theme"));
     }
@@ -129,8 +125,8 @@ $("#lightmode").on('click', function(e) {
 $("#darkmode").on('click', function(e) {
     Cookies.set('scroll-pos', $(window).scrollTop(), {expires: 1});
 
-    if (localStorage.getItem("theme") == "lightmode") {
-        localStorage.setItem("theme", "darkmode")
+    if (localStorage.getItem("theme") == siteThemes["lightmode"]) {
+        localStorage.setItem("theme", siteThemes["darkmode"])
         
         window.__setTheme(localStorage.getItem("theme"));
     }
