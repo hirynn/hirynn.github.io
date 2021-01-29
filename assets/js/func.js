@@ -52,12 +52,35 @@ $(window).on('beforeunload', function(){
 $(window).on('DOMContentLoaded', function(){
     // handles rendering of eng/jp
     var lang = localStorage.getItem("lang");
+    Cookies.set('filename', window.location.pathname);
+    //localStorage.setItem("filename", window.location.pathname);
 
-    if (lang == undefined)
+    if (lang == undefined) 
         localStorage.setItem("lang", langs["en"]);
 
-    if (window.location.href.includes("index_jap")) {
-        localStorage.setItem("lang", langs["jp"]);
+    if (lang == langs["jp"]) {
+        // var filename = localStorage.getItem("filename");
+
+        // if (filename == undefined || !filename.includes("index_jp")) {
+        //     window.location.replace("./index_jp.html");
+        // }
+
+        if (Cookies.get('filename') == undefined || Cookies.get('filename').includes("index_en")) {
+            Cookies.set('filename', window.location.href);
+            window.location.replace("./index_jp.html");
+        }
+    }
+    else if (lang == langs["en"]) {
+        // var filename = localStorage.getItem("filename");
+
+        // if (filename == undefined || !filename.includes("index_en")) {
+        //     window.location.replace("./index_en.html");
+        // }
+
+        if (Cookies.get('filename') == undefined || Cookies.get('filename').includes("index_jp")) {
+            Cookies.set('filename', window.location.href);
+            window.location.replace("./index_en.html");
+        }
     }
 
     // handles rendering of light/dark mode
@@ -108,7 +131,7 @@ $("#jptoggle").on('click', function(e) {
     if (lang == undefined || lang == langs["en"])
         if (typeof (history.pushState) != "undefined") {
             localStorage.setItem("lang", langs["jp"]);
-            window.location.replace("./index_jap.html");
+            window.location.replace("./index_jp.html");
         }
 })
 
