@@ -65,7 +65,7 @@ $(window).on('DOMContentLoaded', function(){
         //     window.location.replace("./index_jp.html");
         // }
 
-        if (Cookies.get('filename') == undefined || Cookies.get('filename').includes("index_en")) {
+        if (Cookies.get('filename') == undefined || Cookies.get('filename').includes("index_jp")) {
             window.location.replace("./index_jp.html");
         }
     }
@@ -76,7 +76,7 @@ $(window).on('DOMContentLoaded', function(){
         //     window.location.replace("./index_en.html");
         // }
 
-        if (Cookies.get('filename') == undefined || Cookies.get('filename').includes("index_jp")) {
+        if (Cookies.get('filename') == undefined || Cookies.get('filename').includes("index_en")) {
             window.location.replace("./index_en.html");
         }
     }
