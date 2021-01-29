@@ -46,35 +46,22 @@ $(window).on('hashchange', function(){
 });
 
 $(window).on('beforeunload', function(){
-    return;
+    
 });
 
 $(window).on('DOMContentLoaded', function(){
     // handles rendering of eng/jp
     var lang = localStorage.getItem("lang");
-    // if (Cookies.get('filename') == undefined)
-    //     Cookies.set('filename', "./index.html");
-    // //localStorage.setItem("filename", window.location.pathname);
 
-    // if (lang == undefined) 
-    //     localStorage.setItem("lang", langs["en"]);
-    // else if (Cookies.get('filename') == "./index.html" && lang == langs["jp"]) {
+    if (lang == undefined) {
+        localStorage.setItem("lang", langs["en"]);
+    }
 
-    //     if (Cookies.get('filename') == undefined || Cookies.get('filename').includes("index_jp")) {
-    //         window.location.replace("./index_jp.html");
-    //     }
-    // }
-    // else if (Cookies.get('filename') == "./index.html" && lang == langs["en"]) {
-    //     // var filename = localStorage.getItem("filename");
-
-    //     // if (filename == undefined || !filename.includes("index_en")) {
-    //     //     window.location.replace("./index_en.html");
-    //     // }
-
-    //     if (Cookies.get('filename') == undefined || Cookies.get('filename').includes("index_en")) {
-    //         window.location.replace("./index_en.html");
-    //     }
-    // }
+    // check if this is landing page
+    var check = $(this).hasAttr("#hidden");
+    if (typeof check !== typeof undefined && check !== false) {
+        window.location.replace("./index_" + lang + ".html");
+    }
 
     // handles rendering of light/dark mode
     var setTheme = localStorage.getItem("theme")
@@ -103,7 +90,7 @@ $(window).on('DOMContentLoaded', function(){
     var setTheme = localStorage.getItem("theme");
     window.__setTheme(setTheme == undefined ? siteThemes["lightmode"] : setTheme);
     handleScrollPos();
-    history.pushState(null, $("head title").text(), "./");
+    history.replaceState(null, $("head title").text(), "./");
 });
 
 $("#engtoggle").on('click', function(e) {  
@@ -111,7 +98,7 @@ $("#engtoggle").on('click', function(e) {
     localStorage.setItem("scroll-pos", $(window).scrollTop());
 
     if (lang == undefined || lang == langs["jp"])
-        if (typeof (history.pushState) != "undefined") {
+        if (typeof (history.replaceState) != "undefined") {
             localStorage.setItem("lang", langs["en"]);
             Cookies.set('filename', "./index_en.html");
             window.location.replace("./index_en.html");
@@ -123,7 +110,7 @@ $("#jptoggle").on('click', function(e) {
     localStorage.setItem("scroll-pos", $(window).scrollTop());
 
     if (lang == undefined || lang == langs["en"])
-        if (typeof (history.pushState) != "undefined") {
+        if (typeof (history.replaceState) != "undefined") {
             localStorage.setItem("lang", langs["jp"]);
             Cookies.set('filename', "./index_jp.html");
             window.location.replace("./index_jp.html");
@@ -155,8 +142,8 @@ function handleScrollPos()
     var lastScrollTop = Cookies.get("scroll-pos")
     var scroll = localStorage.getItem("scroll-pos");
 
-    if (typeof (history.pushState) != "undefined") {
-        history.pushState(null, $("head title").text(), "./");
+    if (typeof (history.replaceState) != "undefined") {
+        history.replaceState(null, $("head title").text(), "./");
     }
     if (lastScrollTop) {
         $(window).scrollTop(lastScrollTop);
