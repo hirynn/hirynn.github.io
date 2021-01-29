@@ -52,13 +52,13 @@ $(window).on('beforeunload', function(){
 $(window).on('DOMContentLoaded', function(){
     // handles rendering of eng/jp
     var lang = localStorage.getItem("lang");
-    Cookies.set('filename', window.location.pathname);
+    if (Cookies.get('filename') == undefined)
+        Cookies.set('filename', window.location.pathname);
     //localStorage.setItem("filename", window.location.pathname);
 
     if (lang == undefined) 
         localStorage.setItem("lang", langs["en"]);
-
-    if (lang == langs["jp"]) {
+    else if (lang == langs["jp"]) {
         // var filename = localStorage.getItem("filename");
 
         // if (filename == undefined || !filename.includes("index_jp")) {
@@ -66,7 +66,6 @@ $(window).on('DOMContentLoaded', function(){
         // }
 
         if (Cookies.get('filename') == undefined || Cookies.get('filename').includes("index_en")) {
-            Cookies.set('filename', window.location.href);
             window.location.replace("./index_jp.html");
         }
     }
@@ -78,7 +77,6 @@ $(window).on('DOMContentLoaded', function(){
         // }
 
         if (Cookies.get('filename') == undefined || Cookies.get('filename').includes("index_jp")) {
-            Cookies.set('filename', window.location.href);
             window.location.replace("./index_en.html");
         }
     }
@@ -120,7 +118,8 @@ $("#engtoggle").on('click', function(e) {
     if (lang == undefined || lang == langs["jp"])
         if (typeof (history.pushState) != "undefined") {
             localStorage.setItem("lang", langs["en"]);
-            window.location.replace("./index.html");
+            Cookies.set('filename', "./index_en.html");
+            window.location.replace("./index_en.html");
         }
 })
 
@@ -131,6 +130,7 @@ $("#jptoggle").on('click', function(e) {
     if (lang == undefined || lang == langs["en"])
         if (typeof (history.pushState) != "undefined") {
             localStorage.setItem("lang", langs["jp"]);
+            Cookies.set('filename', "./index_jp.html");
             window.location.replace("./index_jp.html");
         }
 })
