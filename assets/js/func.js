@@ -52,34 +52,29 @@ $(window).on('beforeunload', function(){
 $(window).on('DOMContentLoaded', function(){
     // handles rendering of eng/jp
     var lang = localStorage.getItem("lang");
-    if (Cookies.get('filename') == undefined)
-        Cookies.set('filename', "./index.html");
-    //localStorage.setItem("filename", window.location.pathname);
+    // if (Cookies.get('filename') == undefined)
+    //     Cookies.set('filename', "./index.html");
+    // //localStorage.setItem("filename", window.location.pathname);
 
-    if (lang == undefined) 
-        localStorage.setItem("lang", langs["en"]);
-    else if (Cookies.get('filename') == "./index.html" && lang == langs["jp"]) {
-        // var filename = localStorage.getItem("filename");
+    // if (lang == undefined) 
+    //     localStorage.setItem("lang", langs["en"]);
+    // else if (Cookies.get('filename') == "./index.html" && lang == langs["jp"]) {
 
-        // if (filename == undefined || !filename.includes("index_jp")) {
-        //     window.location.replace("./index_jp.html");
-        // }
+    //     if (Cookies.get('filename') == undefined || Cookies.get('filename').includes("index_jp")) {
+    //         window.location.replace("./index_jp.html");
+    //     }
+    // }
+    // else if (Cookies.get('filename') == "./index.html" && lang == langs["en"]) {
+    //     // var filename = localStorage.getItem("filename");
 
-        if (Cookies.get('filename') == undefined || Cookies.get('filename').includes("index_jp")) {
-            window.location.replace("./index_jp.html");
-        }
-    }
-    else if (Cookies.get('filename') == "./index.html" && lang == langs["en"]) {
-        // var filename = localStorage.getItem("filename");
+    //     // if (filename == undefined || !filename.includes("index_en")) {
+    //     //     window.location.replace("./index_en.html");
+    //     // }
 
-        // if (filename == undefined || !filename.includes("index_en")) {
-        //     window.location.replace("./index_en.html");
-        // }
-
-        if (Cookies.get('filename') == undefined || Cookies.get('filename').includes("index_en")) {
-            window.location.replace("./index_en.html");
-        }
-    }
+    //     if (Cookies.get('filename') == undefined || Cookies.get('filename').includes("index_en")) {
+    //         window.location.replace("./index_en.html");
+    //     }
+    // }
 
     // handles rendering of light/dark mode
     var setTheme = localStorage.getItem("theme")
