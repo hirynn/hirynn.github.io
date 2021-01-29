@@ -58,7 +58,7 @@ $(window).on('DOMContentLoaded', function(){
     }
 
     // check if this is landing page
-    var check = $(this).hasAttr("#hidden");
+    var check = $(this).attr("hidden");
     if (typeof check !== typeof undefined && check !== false) {
         window.location.replace("./index_" + lang + ".html");
     }
