@@ -58,7 +58,7 @@ $(window).on('DOMContentLoaded', function(){
 
     if (lang == undefined) 
         localStorage.setItem("lang", langs["en"]);
-    else if (lang == langs["jp"]) {
+    else if (Cookies.get('filename').includes("index") && lang == langs["jp"]) {
         // var filename = localStorage.getItem("filename");
 
         // if (filename == undefined || !filename.includes("index_jp")) {
@@ -69,7 +69,7 @@ $(window).on('DOMContentLoaded', function(){
             window.location.replace("./index_jp.html");
         }
     }
-    else if (lang == langs["en"]) {
+    else if (Cookies.get('filename').includes("index") && lang == langs["en"]) {
         // var filename = localStorage.getItem("filename");
 
         // if (filename == undefined || !filename.includes("index_en")) {
