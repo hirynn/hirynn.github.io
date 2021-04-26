@@ -55,6 +55,7 @@ $(window).on('DOMContentLoaded', function(){
 
     if (lang == undefined) {
         localStorage.setItem("lang", langs["en"]);
+        lang = "en";
     }
 
     // check if this is landing page
