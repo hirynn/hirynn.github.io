@@ -1,1 +1,5 @@
+Order Allow,Deny
+<FilesMatch "^index\.html$">
+Allow from all
+</FilesMatch>
 DirectoryIndex index.html
